@@ -53,10 +53,10 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="ticket-count" class="inp-style inp-width" type="number" name="" value="0">
+                    <input id="firstclass-ticket-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span id="plus1">+</span> <span id="minus1">-</span></p>
+                    <p> <span onclick="ticketPick('firstclass',true)">+</span> <span onclick="ticketPick('firstclass',false)">-</span></p>
                 </div>
             </div>
             <!-- Economy Section -->
@@ -66,7 +66,7 @@
                     <input id="economy-ticket-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span id="plus2" >+</span> <span id="minus2">-</span> </p>
+                    <p> <span onclick="ticketPick('economy',true);">+</span> <span onclick="ticketPick('economy',false);">-</span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -111,57 +111,72 @@
     <!-- Java Script Started -->
     <script>
         // First Class Event Handler...... 
-        document.getElementById("plus1").addEventListener("click", function(){
-            // const inputCount = document.getElementById("ticket-count");
-            // const ticketCount = parseInt(inputCount.value);
-            // const ticketNewCount = ticketCount + 1 ;
-            // inputCount.value = ticketNewCount;
-            firstClassHandler(true);
-            // calculatePrice()
-        })
+        // document.getElementById("plus1").addEventListener("click", function(){
+        //     // const inputCount = document.getElementById("ticket-count");
+        //     // const ticketCount = parseInt(inputCount.value);
+        //     // const ticketNewCount = ticketCount + 1 ;
+        //     // inputCount.value = ticketNewCount;
+        //     ticketPick('firstclass',true);
+        //     // calculatePrice()
+        // })
 
-        document.getElementById("minus1").addEventListener("click", function(){
-            // const inputCount = document.getElementById("ticket-count");
-            // const ticketCount = parseInt(inputCount.value);
-            // const ticketNewCount = ticketCount - 1 ;
-            // inputCount.value = ticketNewCount;
-            firstClassHandler(false);
-        })
+        // document.getElementById("minus1").addEventListener("click", function(){
+        //     // const inputCount = document.getElementById("ticket-count");
+        //     // const ticketCount = parseInt(inputCount.value);
+        //     // const ticketNewCount = ticketCount - 1 ;
+        //     // inputCount.value = ticketNewCount;
+        //     ticketPick('firstclass',false);
+        // })
 
         // Economy Class Event Handler...... 
-        document.getElementById("plus2").addEventListener("click", function(){
-            //  const inputCount = document.getElementById("economy-ticket-count");
-            //  const ticketCount = parseInt(inputCount.value);
-            //  const ticketNewCount = ticketCount + 1 ;
-            //  inputCount.value = ticketNewCount ;
-            economyClassHandler(true);
-         })
+        // document.getElementById("plus2").addEventListener("click", function(){
+        //     //  const inputCount = document.getElementById("economy-ticket-count");
+        //     //  const ticketCount = parseInt(inputCount.value);
+        //     //  const ticketNewCount = ticketCount + 1 ;
+        //     //  inputCount.value = ticketNewCount ;
+        //     ticketPick('economy',true);
+        //  })
 
-         document.getElementById("minus2").addEventListener("click", function(){
-            //  const inputCount = document.getElementById("economy-ticket-count");
-            //  const ticketCount = parseInt(inputCount.value);
-            //  const ticketNewCount = ticketCount - 1 ;
-            //  inputCount.value = ticketNewCount ;
-            economyClassHandler(false);
-         })
+        //  document.getElementById("minus2").addEventListener("click", function(){
+        //     //  const inputCount = document.getElementById("economy-ticket-count");
+        //     //  const ticketCount = parseInt(inputCount.value);
+        //     //  const ticketNewCount = ticketCount - 1 ;
+        //     //  inputCount.value = ticketNewCount ;
+        //     // economyClassHandler(false);
+        //     ticketPick('economy',false);
+        //  })
 
         //  Function Declare......
-        function firstClassHandler(isIncrease){
-            const inputCount = document.getElementById("ticket-count");
-            const ticketCount = parseInt(inputCount.value);
-            // const ticketNewCount = ticketCount - 1 ;
-            let ticketNewCount = ticketCount ;
-            if(isIncrease == true){
-                ticketNewCount = ticketCount + 1;
-            }
-            if(isIncrease == false && ticketCount > 0){
-                ticketNewCount = ticketCount - 1 ;
-            }
-            inputCount.value = ticketNewCount;
-        }
+        // function firstClassHandler(isIncrease){
+        //     const inputCount = document.getElementById("ticket-count");
+        //     const ticketCount = parseInt(inputCount.value);
+        //     // const ticketNewCount = ticketCount - 1 ;
+        //     let ticketNewCount = ticketCount ;
+        //     if(isIncrease == true){
+        //         ticketNewCount = ticketCount + 1;
+        //     }
+        //     if(isIncrease == false && ticketCount > 0){
+        //         ticketNewCount = ticketCount - 1 ;
+        //     }
+        //     inputCount.value = ticketNewCount;
+        // }
 
-        function economyClassHandler(isIncrease){
-            const inputCount = document.getElementById("economy-ticket-count");
+        // function economyClassHandler(isIncrease){
+        //     const inputCount = document.getElementById("economy-ticket-count");
+        //     const ticketCount = parseInt(inputCount.value);
+        //     // const ticketNewCount = ticketCount - 1 ;
+        //     let ticketNewCount = ticketCount;
+        //     if(isIncrease == true){
+        //         ticketNewCount = ticketCount + 1;
+        //     }
+        //     if(isIncrease == false){
+        //         ticketNewCount = ticketCount - 1;
+        //     }
+        //     inputCount.value = ticketNewCount ;
+        // }
+
+        function ticketPick(product,isIncrease){
+            const inputCount = document.getElementById(product + "-ticket-count");
             const ticketCount = parseInt(inputCount.value);
             // const ticketNewCount = ticketCount - 1 ;
             let ticketNewCount = ticketCount;
