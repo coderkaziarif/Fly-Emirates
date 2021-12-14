@@ -75,7 +75,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p id="ticket-price">$500</p>
+                        <p id="ticket-price">$000</p>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p id="vat-charge">$50</p>
+                        <p id="vat-charge">$00</p>
                     </div>
                 </div>
                 <hr>
@@ -93,7 +93,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p id="grand-total">$550</p>
+                        <p id="grand-total">$000</p>
                     </div>
                 </div>
             </div>
@@ -176,24 +176,32 @@
         // }
 
         function ticketPick(product,isIncrease){
-            const inputCount = document.getElementById(product + "-ticket-count");
-            const ticketCount = parseInt(inputCount.value);
+            const ticketSelect = document.getElementById(product + "-ticket-count");
+            // const ticketCount = parseInt(ticketSelect.value);
+            const ticketCount = getTicketNumber(product)
             // const ticketNewCount = ticketCount - 1 ;
             let ticketNewCount = ticketCount;
             if(isIncrease == true){
                 ticketNewCount = ticketCount + 1;
             }
-            if(isIncrease == false){
+            if(isIncrease == false && ticketCount > 0){
                 ticketNewCount = ticketCount - 1;
             }
-            inputCount.value = ticketNewCount ;
+            ticketSelect.value = ticketNewCount ;
+            calculateTicketPrice();
         }
 
          
+        function calculateTicketPrice(){
+            // const firstClassInput = document.getElementById("firstclass-ticket-count");
+            // const firstTicketPick = parseInt(firstClassInput.value);
+            const firstClassTicketPick = getTicketNumber('firstclass');
 
-        function calculatePrice(){
+            // const economyInput = document.getElementById("economy-ticket-count");
+            // const economyTicketPick = parseInt(economyInput.value); 
+            const economyTicketPick = getTicketNumber('economy');
             
-            const ticketPrice = ticketNewCount * 150;
+            const ticketPrice = firstClassTicketPick * 150 + economyTicketPick * 100;
             document.getElementById("ticket-price").innerText = "$" + ticketPrice;
 
             const vat =ticketPrice * 0.1 ;
@@ -201,6 +209,12 @@
 
             const grandTotal = ticketPrice + vat;
             document.getElementById("grand-total").innerText = "$" + grandTotal;
+        }
+
+        function getTicketNumber(product){
+            const ticketSelect = document.getElementById(product + "-ticket-count");
+            const ticketPick = parseInt(ticketSelect.value);
+            return ticketPick;
         }
 
     </script>
